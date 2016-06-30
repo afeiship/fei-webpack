@@ -11,3 +11,8 @@ My webpack tasks.
 
 ##build:
 + npm run build
+
+
+##resources:
++ http://webpack.github.io/docs/
++ http://www.jianshu.com/p/8adf4c2bfa51
