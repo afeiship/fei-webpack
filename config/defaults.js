@@ -10,7 +10,7 @@
     srcPath: srcPath,
     publicPath: '/assets/',
     port: defaultPort,
-    defaultModuleLoaders: [
+    moduleLoaders: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
