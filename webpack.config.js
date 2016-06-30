@@ -19,6 +19,15 @@
       path: './dist/',
       filename: 'bundle.js'
     },
+    module: {
+      loaders: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel-loader' // 'babel-loader' is also a legal name to reference
+        }
+      ]
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
