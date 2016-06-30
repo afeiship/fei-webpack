@@ -1,0 +1,16 @@
+{
+  "name": "fei-webpack",
+  "version": "0.0.0",
+  "description": "My webpack tasks.",
+  "homepage": "https://github.com/afeiship/fei-webpack",
+  "author": {
+    "name": "afei",
+    "email": "1290657123@qq.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.2.0",
+    "yargs": "^4.7.1"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "fei-webpack",
+  "description": "My webpack tasks.",
+  "main": "dist/fei-webpack.js",
+  "authors": [
+    "afei"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "next"
+  ],
+  "homepage": "https://github.com/afeiship/fei-webpack",
+  "moduleType": [
+    "amd"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src"
+  ]
+}
