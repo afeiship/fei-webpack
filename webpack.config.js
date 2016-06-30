@@ -15,8 +15,9 @@
       './scripts/main'
     ],
     output: {
-      path: __dirname + "/dist",
-      filename: "bundle.js"
+      publicPath: '/dist/',
+      path: './dist/',
+      filename: 'bundle.js'
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
