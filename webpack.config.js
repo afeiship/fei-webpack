@@ -44,7 +44,7 @@
         },
         {
           test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
-          loader: "file-loader?name=images/[name].[ext]"
+          loader: "file-loader?name=images/[name]_[hash].[ext]"
         }
       ]
     },
