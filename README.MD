@@ -16,3 +16,5 @@ My webpack tasks.
 ##resources:
 + http://webpack.github.io/docs/
 + http://www.jianshu.com/p/8adf4c2bfa51
++ http://www.cnblogs.com/haogj/p/5160821.html
++ https://www.npmjs.com/package/imagemin-webpack-plugin
