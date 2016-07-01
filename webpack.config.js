@@ -12,6 +12,7 @@
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var CopyWebpackPlugin = require('copy-webpack-plugin');
   var PurifyCSSPlugin = require('purifycss-webpack-plugin');
+  var ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 
   //Main config:
@@ -44,7 +45,7 @@
         },
         {
           test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
-          loader: "file-loader?name=images/[name]_[hash].[ext]"
+          loader: "file-loader?name=[path][name].[hash].[ext]"
         }
       ]
     },
@@ -81,12 +82,23 @@
           collapseWhitespace: true
         }
       }),
-      new CopyWebpackPlugin([
-        {
-          from: 'assets',
-          to: 'assets'
+      new ImageminPlugin({
+        root: 'assets',
+        disable: false,
+        optipng: {
+          optimizationLevel: 3
+        },
+        gifsicle: {
+          optimizationLevel: 1
+        },
+        jpegtran: {
+          progressive: false
+        },
+        svgo: {},
+        pngquant: {
+          quality: '95-100'
         }
-      ])
+      })
     ]
   };
 
