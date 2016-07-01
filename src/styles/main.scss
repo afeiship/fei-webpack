@@ -1,0 +1,11 @@
+/**main Start**/
+body {
+  background: #f2f2f2;
+  user-select: none;
+  &:hover {
+    background: #eee;
+    color:#f00;
+  }
+}
+
+/**main  End**/
