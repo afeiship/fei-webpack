@@ -4,12 +4,11 @@
 
   const path = require('path');
   const srcPath = path.join(__dirname, '/../src');
-  const defaultPort = 8000;
 
   module.exports = {
     srcPath: srcPath,
     publicPath: '/assets/',
-    port: defaultPort,
+    port: 8080,
     moduleLoaders: [
       {
         test: /\.(js|jsx)$/,

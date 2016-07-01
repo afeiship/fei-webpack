@@ -1,1 +1,2 @@
-document.write('It works!');
+let content = require('./content');
+document.write(content);

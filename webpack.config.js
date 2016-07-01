@@ -4,13 +4,14 @@
 
   var path = require('path');
   var webpack = require('webpack');
-  var baseConfig = require('./config/base');
+  var defaultConfig = require('./config/defaults');
+  var srcPath = defaultConfig.srcPath;
 
 
   module.exports = {
-    context: path.join(__dirname, './src'),
+    context: srcPath,
     entry: [
-      'webpack-dev-server/client?http://127.0.0.1:' + baseConfig.devServerPort,
+      'webpack-dev-server/client?http://127.0.0.1:' + defaultConfig.port,
       'webpack/hot/only-dev-server',
       './scripts/main'
     ],
@@ -20,13 +21,7 @@
       filename: 'bundle.js'
     },
     module: {
-      loaders: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader' // 'babel-loader' is also a legal name to reference
-        }
-      ]
+      loaders: defaultConfig.moduleLoaders
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
