@@ -12,6 +12,8 @@ My webpack tasks.
 ##build:
 + npm run build
 
+##problem:
++ image-min `https://github.com/Klathmon/imagemin-webpack-plugin` can not change dist path(images-->assets/images)
 
 ##resources:
 + http://webpack.github.io/docs/

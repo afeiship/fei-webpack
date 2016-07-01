@@ -11,14 +11,14 @@
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var CopyWebpackPlugin = require('copy-webpack-plugin');
-  var PurifyCSSPlugin = require("purifycss-webpack-plugin");
+  var PurifyCSSPlugin = require('purifycss-webpack-plugin');
 
 
   //Main config:
   module.exports = {
     context: srcPath,
     entry: [
-      'webpack-dev-server/client?http://127.0.0.1:' + defaultConfig.port,
+      'webpack-dev-server/client?http://localhost:' + defaultConfig.port,
       'webpack/hot/only-dev-server',
       './scripts/main'
     ],
@@ -44,31 +44,9 @@
         },
         {
           test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
-          loaders: [
-            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
-            'image-webpack'
-          ]
+          loader: "file-loader?name=images/[name].[ext]"
         }
-      ],
-      imageWebpackLoader: {
-        progressive: true,
-        optimizationLevel: 7,
-        interlaced: false,
-        pngquant: {
-          quality: "65-90",
-          speed: 4
-        },
-        svgo: {
-          plugins: [
-            {
-              removeViewBox: false
-            },
-            {
-              removeEmptyAttrs: false
-            }
-          ]
-        }
-      }
+      ]
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -87,14 +65,12 @@
       new PurifyCSSPlugin({
         paths: [
           'index.html'
-        ]
-      }),
-      new CopyWebpackPlugin([
-        {
-          from: 'assets',
-          to: 'assets'
+        ],
+        purifyOptions: {
+          minify: true,
+          info: true
         }
-      ]),
+      }),
       new HtmlWebpackPlugin({
         title: 'Fei Webpack App',
         template: 'index.html',
@@ -104,7 +80,13 @@
           removeComments: true,
           collapseWhitespace: true
         }
-      })
+      }),
+      new CopyWebpackPlugin([
+        {
+          from: 'assets',
+          to: 'assets'
+        }
+      ])
     ]
   };
 
