@@ -11,10 +11,10 @@
   var ExtractTextPlugin = require('extract-text-webpack-plugin');
   var HtmlWebpackPlugin = require('html-webpack-plugin');
   var CopyWebpackPlugin = require('copy-webpack-plugin');
-  
-  //TODO:Why not work???
-  var ImageminPlugin = require('imagemin-webpack-plugin')['default'];
+  var PurifyCSSPlugin = require("purifycss-webpack-plugin");
 
+
+  //Main config:
   module.exports = {
     context: srcPath,
     entry: [
@@ -44,9 +44,31 @@
         },
         {
           test: /\.(png|jpe?g|eot|svg|ttf|woff2?)$/,
-          loader: "file-loader?name=images/[name].[ext]"
+          loaders: [
+            'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack'
+          ]
         }
-      ]
+      ],
+      imageWebpackLoader: {
+        progressive: true,
+        optimizationLevel: 7,
+        interlaced: false,
+        pngquant: {
+          quality: "65-90",
+          speed: 4
+        },
+        svgo: {
+          plugins: [
+            {
+              removeViewBox: false
+            },
+            {
+              removeEmptyAttrs: false
+            }
+          ]
+        }
+      }
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -62,19 +84,10 @@
       new ExtractTextPlugin('styles/[name]_[hash].css', {
         publicPath: '/styles/'
       }),
-      new ImageminPlugin({
-        disable: false,
-        optipng: {
-          optimizationLevel: 3
-        },
-        gifsicle: {
-          optimizationLevel: 1
-        },
-        jpegtran: {
-          progressive: false
-        },
-        svgo: {},
-        pngquant:null
+      new PurifyCSSPlugin({
+        paths: [
+          'index.html'
+        ]
       }),
       new CopyWebpackPlugin([
         {
