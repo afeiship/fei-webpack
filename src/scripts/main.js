@@ -1,8 +1,9 @@
 let content = require('./content');
 
 import '../styles/main.scss';
-
 var testImage = require('../assets/images/Img1.png');
+var Toast=require('components/Toast');
 
-console.log(testImage);
-document.write('IMG PATH:->' + testImage);
+
+console.log(Toast);
+
