@@ -3,6 +3,7 @@
   'use strict';
 
   var path = require('path');
+  var fs = require('fs');
   var webpack = require('webpack');
   var defaultConfig = require('./config/defaults');
   var srcPath = defaultConfig.srcPath;
@@ -122,7 +123,7 @@
             }
 
             fs.writeFileSync(
-                path.join(__dirname, '..', 'public','rev-manifest.json'),
+                path.join(__dirname, 'public','rev-manifest.json'),
                 JSON.stringify(json, null, 2)
             );
         });
