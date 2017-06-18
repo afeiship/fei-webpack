@@ -98,7 +98,35 @@
         pngquant: {
           quality: '95-100'
         }
-      })
+      }),
+      function(){
+        //http://www.cnblogs.com/rubylouvre/p/5158923.html
+        this.plugin('done', function (stats) {
+            stats = stats.compilation.getStats().toJson({
+                hash: true,
+                publicPath: true,
+                assets: true,
+                chunks: false,
+                modules: false,
+                source: false,
+                errorDetails: false,
+                timings: false
+            });
+
+            var json = {}, chunk;
+            for (var key in stats.assetsByChunkName) {
+                if (stats.assetsByChunkName.hasOwnProperty(key)) {
+                    chunk = stats.assetsByChunkName[key];
+                    json[key + '.js'] = chunk[0];
+                }
+            }
+
+            fs.writeFileSync(
+                path.join(__dirname, '..', 'public','rev-manifest.json'),
+                JSON.stringify(json, null, 2)
+            );
+        });
+      }
     ],
     resolve: {
       alias: {

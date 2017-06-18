@@ -1,23 +1,23 @@
-#fei-webpack
+# fei-webpack
 My webpack tasks.
 
 
-##usage:
+## usage:
 + Install package: `npm install webpack webpack-dev-sever -g`
 
 
-##hot loader:
+## hot loader:
 + npm run dev
 
-##build:
+## build:
 + npm run build
 
-##problem:
+## problem:
 + image-min `https://github.com/Klathmon/imagemin-webpack-plugin` can not change dist path(images-->assets/images)[OK]
 - http://survivejs.com/webpack/loading-assets/loading-images/
 
 
-##resources:
+## resources:
 + http://webpack.github.io/docs/
 + http://www.jianshu.com/p/8adf4c2bfa51
 + http://www.cnblogs.com/haogj/p/5160821.html
