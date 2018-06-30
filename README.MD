@@ -1,5 +1,5 @@
-# fei-webpack
-My webpack tasks.
+# webpack-notes
+> Webpack notes.
 
 
 ## usage:

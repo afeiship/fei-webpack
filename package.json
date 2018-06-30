@@ -1,8 +1,8 @@
 {
-  "name": "fei-webpack",
+  "name": "webpack-notes",
   "version": "0.0.0",
-  "description": "My webpack tasks.",
-  "homepage": "https://github.com/afeiship/fei-webpack",
+  "description": "Webpack notes.",
+  "homepage": "https://github.com/afeiship/webpack-notes",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
