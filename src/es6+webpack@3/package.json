@@ -1,0 +1,23 @@
+{
+  "name": "webpack-notes",
+  "version": "0.0.1",
+  "description": "Webpack notes.",
+  "homepage": "https://github.com/afeiship/webpack-notes",
+  "author": {
+    "name": "afei",
+    "email": "1290657123@qq.com"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "webpack -p"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.12.0"
+  }
+}
