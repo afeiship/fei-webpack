@@ -1,13 +1,11 @@
 import path from 'path';
 import webpack from 'webpack';
-
-console.log('dev config!', __dirname);
-
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 
 export default (env) => {
-  console.log(env);
   return {
-    mode: 'development',
+    mode: env.mode,
     entry: ['./src/index'],
     output: {
       path: path.join(__dirname, 'dist'),
@@ -24,10 +22,17 @@ export default (env) => {
         }
       ]
     },
-    plugins:[
+    plugins: [
       new webpack.DllReferencePlugin({
         context: __dirname,
         manifest: path.resolve(__dirname, '../dist/vendors/manifest.json')
+      }),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, '../src/index.ejs'),
+      }),
+      new AddAssetHtmlPlugin({
+        includeSourcemap: false,
+        filepath: path.resolve(__dirname, '../dist/vendors/vendors.*.js')
       }),
     ]
   }

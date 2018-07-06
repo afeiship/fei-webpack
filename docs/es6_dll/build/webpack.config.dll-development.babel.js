@@ -11,6 +11,11 @@ export default ({ mode }) => {
         'react-dom'
       ]
     },
+    output: {
+      path: path.resolve(__dirname, '../dist/vendors'),
+      filename: '[name].[hash].js',
+      library: '[name]_library'
+    },
     plugins: [
       new webpack.DllPlugin({
         path: path.resolve(__dirname, '../dist/vendors/manifest.json'),

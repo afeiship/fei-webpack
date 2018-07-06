@@ -7,7 +7,7 @@ export default class extends React.Component{
   render(){
     console.log($);
     return (
-      <div>
+      <div className="app-container">
         <p>Hello world!</p>
         <input />
       </div>
