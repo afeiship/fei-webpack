@@ -1,6 +1,6 @@
 {
   "name": "webpack-notes",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Webpack notes.",
   "main": "index.js",
   "directories": {
@@ -26,7 +26,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --hot --env=development",
-    "semver": "webpack-dev-server --env=semver"
+    "version": "webpack-dev-server --env=semver"
   },
   "repository": {
     "type": "git",
