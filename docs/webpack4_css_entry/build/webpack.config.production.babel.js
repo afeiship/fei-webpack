@@ -1,6 +1,7 @@
 import path, { resolve } from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
 
 const extractAntd = new ExtractTextPlugin('antd/[name]-[hash].css');
 const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
@@ -8,7 +9,7 @@ const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
 export default (env) => {
 
   return {
-    mode: 'development',
+    mode: 'production',
     entry: {
       'app': './src/index.js',
       'antd': 'antd/dist/antd.less'
@@ -40,12 +41,7 @@ export default (env) => {
             use: [
               'css-loader',
               'postcss-loader',
-              {
-                loader: 'less-loader',
-                options: {
-                  javascriptEnabled: true
-                }
-              }
+              'less-loader?javascriptEnabled=true'
             ]
           })
         },
@@ -55,8 +51,10 @@ export default (env) => {
       extractAntd,
       extractCss,
       new HtmlWebpackPlugin({
-        template: resolve(__dirname, `../src/index.ejs`)
+        template: resolve(__dirname, `../src/index.ejs`),
+        excludeAssets: [/antd-.*\.js/]
       }),
+      new HtmlWebpackExcludeAssetsPlugin()
     ]
   };
 
