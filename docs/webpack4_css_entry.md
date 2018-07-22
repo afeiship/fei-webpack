@@ -10,7 +10,7 @@
 
 ## webpack config:
 ```js
-  import path, { resolve } from 'path';
+import path, { resolve } from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
@@ -71,4 +71,56 @@ export default (env) => {
   };
 
 };
+```
+
+
+## antd-not babel-import:
+```json
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-decorators-legacy"
+  ]
+}
+```
+```conf
+444K	antd
+4.0K	antd-565cb6.bundle.js
+1.3M	app-565cb6.bundle.js
+4.0K	index.html
+```
+
+
+## antd-has babel-import:
+```json
+{
+  "presets": [
+    "env",
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": true
+      }
+    ]
+  ]
+}
+```
+
+### size:
+```conf
+520K	antd
+4.0K	antd-aa6ad1.bundle.js
+132K	app-aa6ad1.bundle.js
+4.0K	index.html
 ```
