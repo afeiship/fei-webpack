@@ -1,6 +1,6 @@
 {
   "name": "webpack-notes",
-  "version": "2.0.3",
+  "version": "1.0.1-0",
   "description": "Webpack notes.",
   "main": "index.js",
   "directories": {
@@ -29,7 +29,7 @@
     "postcss-loader": "^2.1.6",
     "react-hmr-decorator": "github:afeiship/react-hmr-decorator",
     "react-hot-loader": "^4.3.3",
-    "semver-webpack-plugin": "^1.0.12",
+    "semver-webpack-plugin": "github:afeiship/semver-webpack-plugin",
     "style-loader": "^0.21.0",
     "webpack": "^4.15.0",
     "webpack-bundle-analyzer": "^2.13.1",

@@ -2,7 +2,7 @@ import path, { resolve } from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
-import WebpackShellPlugin from 'webpack-shell-plugin';
+import SemverWebapckPlugin from 'semver-webpack-plugin';
 
 const extractAntd = new ExtractTextPlugin('antd/[name]-[hash].css');
 const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
@@ -56,11 +56,7 @@ export default (env) => {
         excludeAssets: [/antd-.*\.js/]
       }),
       new HtmlWebpackExcludeAssetsPlugin(),
-      new WebpackShellPlugin({
-        onBuildEnd: [
-          'tar zcf dist/dist.tar.gz dist'
-        ]
-      })
+      new SemverWebapckPlugin({ enabled: true })
     ]
   };
 

@@ -2,11 +2,12 @@ import path, { resolve } from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+
+
 const extractAntd = new ExtractTextPlugin('antd/[name]-[hash].css');
 const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
 
 export default (env) => {
-
   return {
     mode: 'development',
     entry: {
