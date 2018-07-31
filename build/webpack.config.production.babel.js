@@ -2,6 +2,7 @@ import path, { resolve } from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
+import WebpackShellPlugin from 'webpack-shell-plugin';
 
 const extractAntd = new ExtractTextPlugin('antd/[name]-[hash].css');
 const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
@@ -54,7 +55,12 @@ export default (env) => {
         template: resolve(__dirname, `../src/index.ejs`),
         excludeAssets: [/antd-.*\.js/]
       }),
-      new HtmlWebpackExcludeAssetsPlugin()
+      new HtmlWebpackExcludeAssetsPlugin(),
+      new WebpackShellPlugin({
+        onBuildEnd: [
+          'tar zcf dist/dist.tar.gz dist'
+        ]
+      })
     ]
   };
 
