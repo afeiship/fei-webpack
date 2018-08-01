@@ -12,15 +12,19 @@ npm install -D afeiship/semver-webpack-plugin
 plugins: [
   new SemverWebpackPlugin({
     enabled: true,
-    incArgs: [ 'prepatch' ]
+    callback: function (inVersion) {
+      return this.inc( inVersion, 'prerelease','alpha');
+    }
   })
 ]
 
 //production:
 plugins: [
-  new SemverWebpackPlugin({
+  new SemverWebapckPlugin({
     enabled: true,
-    incArgs: [ 'patch' ]
+    callback: function (inVersion) {
+      return this.inc( inVersion, 'prerelease','alpha');
+    }
   })
 ]
 ```

@@ -56,7 +56,12 @@ export default (env) => {
         excludeAssets: [/antd-.*\.js/]
       }),
       new HtmlWebpackExcludeAssetsPlugin(),
-      new SemverWebapckPlugin({ enabled: true })
+      new SemverWebapckPlugin({
+        enabled: true,
+        callback: function (inVersion) {
+          return this.inc( inVersion, 'prerelease','alpha');
+        }
+      })
     ]
   };
 
