@@ -1,6 +1,6 @@
 {
   "name": "webpack-notes",
-  "version": "1.0.1-alpha.6",
+  "version": "1.0.1-alpha.41",
   "description": "Webpack notes.",
   "main": "index.js",
   "directories": {
@@ -12,6 +12,7 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
+    "archiver-webpack-plugin": "github:afeiship/archiver-webpack-plugin",
     "autoprefixer": "^9.0.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",

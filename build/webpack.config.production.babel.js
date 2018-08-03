@@ -3,6 +3,12 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackExcludeAssetsPlugin from 'html-webpack-exclude-assets-plugin';
 import SemverWebapckPlugin from 'semver-webpack-plugin';
+import ArchiverWebapckPlugin from 'archiver-webpack-plugin';
+
+const version = require('../package.json').version;
+
+console.log('version:->', version);
+
 
 const extractAntd = new ExtractTextPlugin('antd/[name]-[hash].css');
 const extractCss = new ExtractTextPlugin('styles/[name]-[hash].css');
@@ -59,7 +65,19 @@ export default (env) => {
       new SemverWebapckPlugin({
         enabled: true,
         callback: function (inVersion) {
-          return this.inc( inVersion, 'prerelease','alpha');
+          return this.inc(inVersion, 'prerelease', 'alpha');
+        }
+      }),
+      new ArchiverWebapckPlugin({
+        transform: function (inValue) {
+          return 'admin/' + inValue;
+        },
+        output: function (inPath, inExt) {
+          return inPath.replace('dist', 'dist/admin-' + version) + inExt;
+        },
+        formatOptions: {
+          gzip: true,
+          zlib: { level: 9 }
         }
       })
     ]
