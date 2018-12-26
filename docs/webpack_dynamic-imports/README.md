@@ -6,3 +6,6 @@
 
 ## webpack hmr+ loadable has bug:
 + https://github.com/gaearon/react-hot-loader/issues/678
+
+## prefect solution:
++ https://github.com/theKashey/react-imported-component
